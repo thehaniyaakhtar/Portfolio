@@ -1,0 +1,75 @@
+.contactContainer {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.contactSection {
+  background: url('/contact.png') center center/cover no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.navLink {
+  color: #a6a6a6;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 8px 16px;
+}
+
+.navLink:hover {
+  color: #fcac16;
+}
+
+.navLink.active {
+  color: #fcac16;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.buttonContainer {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialButton {
+  background-color: #fcac16;
+  color: #211f29;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.socialButton:hover {
+  background-color: #e69c0e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+} 
