@@ -1,0 +1,387 @@
+.academicsContainer {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #211f2a 0%, #1a1822 50%, #13111a 100%);
+}
+
+.academicsSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.navLink {
+  color: #a6a6a6;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 8px 16px;
+}
+
+.navLink:hover {
+  color: #fcac16;
+}
+
+.navLink.active {
+  color: #fcac16;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.contentContainer {
+  max-width: 1200px;
+  width: 90%;
+  padding: 0 20px;
+  margin-bottom: 60px;
+}
+
+.mainTitle {
+  font-family: var(--font-bebas-neue);
+  font-size: 3.5rem;
+  color: #fcac16;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.introSection {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  border: 1px solid rgba(252, 172, 22, 0.2);
+}
+
+.introText {
+  color: #a6a6a6;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0;
+}
+
+.section {
+  margin-bottom: 50px;
+}
+
+.sectionTitle {
+  font-family: var(--font-bebas-neue);
+  font-size: 2.5rem;
+  color: #fcac16;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #fcac16;
+  padding-bottom: 10px;
+}
+
+.subjectGroup {
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 25px;
+  border-radius: 10px;
+  border-left: 4px solid #fcac16;
+}
+
+.subjectTitle {
+  font-family: var(--font-bebas-neue);
+  font-size: 1.8rem;
+  color: #fcac16;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.certificateItem {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(252, 172, 22, 0.1);
+}
+
+.certificateTitle {
+  font-family: var(--font-bebas-neue);
+  font-size: 1.3rem;
+  color: #fcac16;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.certificateDetails {
+  color: #a6a6a6;
+}
+
+.certificateDetails p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.certificateDetails strong {
+  color: #fcac16;
+}
+
+.certificateDetails ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.certificateDetails li {
+  margin-bottom: 5px;
+  color: #a6a6a6;
+}
+
+.certificateButton,
+.githubButton,
+.certificationButton {
+  font-family: var(--font-bebas-neue);
+  background-color: #fcac16;
+  color: #211f29;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: none;
+  outline: none;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.certificateButton:hover,
+.githubButton:hover,
+.certificationButton:hover {
+  background-color: #e69c0e;
+  color: #211f29;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.subjectList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.subjectList li {
+  color: #a6a6a6;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(166, 166, 166, 0.2);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.subjectList li:last-child {
+  border-bottom: none;
+}
+
+.certificationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.projectItem {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(252, 172, 22, 0.1);
+}
+
+.projectTitle {
+  font-family: var(--font-bebas-neue);
+  font-size: 1.5rem;
+  color: #fcac16;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.projectDescription {
+  color: #a6a6a6;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.projectButtons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.leadershipItem {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(252, 172, 22, 0.1);
+}
+
+.leadershipTitle {
+  font-family: var(--font-bebas-neue);
+  font-size: 1.4rem;
+  color: #fcac16;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.leadershipDescription {
+  color: #a6a6a6;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.eventsSection {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 25px;
+  border-radius: 10px;
+  margin: 25px 0;
+  border: 1px solid rgba(252, 172, 22, 0.1);
+}
+
+.eventsTitle {
+  font-family: var(--font-bebas-neue);
+  font-size: 1.4rem;
+  color: #fcac16;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.eventsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.eventsList li {
+  color: #a6a6a6;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(166, 166, 166, 0.2);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.eventsList li:last-child {
+  border-bottom: none;
+}
+
+.eventsList li strong {
+  color: #fcac16;
+}
+
+.leadershipSummary {
+  color: #a6a6a6;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #fcac16;
+  margin-top: 20px;
+}
+
+.publicationStatus {
+  color: #a6a6a6;
+  font-size: 14px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .subjectTitle {
+    font-size: 1.5rem;
+  }
+  
+  .contentContainer {
+    width: 95%;
+    padding: 0 10px;
+  }
+  
+  .certificationsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .projectButtons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .nav {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .navLink {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 2rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+  
+  .subjectTitle {
+    font-size: 1.3rem;
+  }
+  
+  .certificateTitle {
+    font-size: 1.1rem;
+  }
+  
+  .projectTitle {
+    font-size: 1.3rem;
+  }
+  
+  .leadershipTitle {
+    font-size: 1.2rem;
+  }
+  
+  .introText {
+    font-size: 1rem;
+  }
+} 
