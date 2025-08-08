@@ -1,7 +1,6 @@
 "use client";
 import styles from "./academics.module.css";
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Academics() {
   return (
@@ -319,7 +318,7 @@ export default function Academics() {
               <div className={styles.leadershipItem}>
                 <h3 className={styles.leadershipTitle}>Magazine Coordinator (2nd Year)</h3>
                 <p className={styles.leadershipDescription}>
-                  Drafted event reports, authored technical articles, and coordinated content for the department's Student Association.
+                  Drafted event reports, authored technical articles, and coordinated content for the department&apos;s Student Association.
                 </p>
               </div>
             </div>
