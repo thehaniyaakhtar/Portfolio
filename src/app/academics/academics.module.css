@@ -317,6 +317,174 @@
   font-style: italic;
 }
 
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.modalContent {
+  background: rgba(20, 20, 20, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  max-width: 90vw;
+  max-height: 90vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+  min-height: 200px;
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #fcac16;
+  color: #fcac16;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modalCloseButton:hover {
+  background-color: #fcac16;
+  color: #211f29;
+  transform: scale(1.1);
+}
+
+.modalNavButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid #fcac16;
+  color: #fcac16;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modalNavButton:hover {
+  background-color: #fcac16;
+  color: #211f29;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.modalImageContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 800px;
+  height: 600px;
+  margin: 20px 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.modalImage {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+  width: auto;
+  height: auto;
+  min-width: 200px;
+  min-height: 200px;
+}
+
+.imageLoading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fcac16;
+  font-size: 16px;
+  gap: 16px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(252, 172, 22, 0.3);
+  border-top: 3px solid #fcac16;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.imageError {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ff6b6b;
+  font-size: 16px;
+  gap: 16px;
+  text-align: center;
+}
+
+.modalImageTitle {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 12px 24px;
+  border-radius: 8px;
+  margin-top: 16px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.modalImageCounter {
+  color: #a6a6a6;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .mainTitle {
@@ -354,6 +522,36 @@
     font-size: 14px;
     padding: 6px 12px;
   }
+
+  /* Mobile modal adjustments */
+  .modalContent {
+    padding: 20px;
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+
+  .modalImageContainer {
+    width: 90vw;
+    height: 60vh;
+    min-height: 400px;
+    max-height: 70vh;
+  }
+
+  .modalNavButton {
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+  }
+
+  .modalImageTitle {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .modalImageCounter {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -383,5 +581,34 @@
   
   .introText {
     font-size: 1rem;
+  }
+
+  /* Small mobile modal adjustments */
+  .modalContent {
+    padding: 16px;
+    min-width: 280px;
+  }
+
+  .modalImageContainer {
+    width: 95vw;
+    height: 70vh;
+    min-height: 300px;
+    max-height: 80vh;
+  }
+
+  .modalNavButton {
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
+  }
+
+  .modalImageTitle {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .modalImageCounter {
+    font-size: 11px;
+    padding: 4px 8px;
   }
 } 
