@@ -1,10 +1,9 @@
 "use client";
 import styles from "./contact.module.css";
+import Link from 'next/link';
 
 export default function Contact() {
-  const handleGmailClick = () => {
-    window.location.href = "mailto:thehaniyaakhtar@gmail.com";
-  };
+
 
   const handleLinkedInClick = () => {
     window.open("https://www.linkedin.com/in/thehaniyaakhtar/", "_blank");
@@ -19,22 +18,17 @@ export default function Contact() {
       <section className={styles.contactSection}>
         {/* Navigation bar */}
         <nav className={styles.nav}>
-          <a href="/" className={styles.navLink}>Home</a>
-          <a href="/academics" className={styles.navLink}>Academics</a>
-          <a href="/skills-certifications" className={styles.navLink}>Skills and Certifications</a>
-          <a href="/contact" className={styles.navLink + ' ' + styles.active}>Get in Touch</a>
+          <Link href="/" className={styles.navLink}>Home</Link>
+          <Link href="/academics" className={styles.navLink}>Academics</Link>
+          <Link href="/skills-certifications" className={styles.navLink}>Skills and Certifications</Link>
+          <Link href="/contact" className={styles.navLink + ' ' + styles.active}>Get in Touch</Link>
         </nav>
         
         {/* Social media buttons at bottom */}
         <div className={styles.buttonContainer}>
-          <a
-            className={styles.socialButton}
-            href="https://forms.gle/xEWJNTfeFZaW5fGt7"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Reach Out
-          </a>
+          <button className={styles.socialButton} onClick={() => window.location.href = "mailto:thehaniyaakhtar@gmail.com"}>
+            Gmail
+          </button>
           <button className={styles.socialButton} onClick={handleLinkedInClick}>
             LinkedIn
           </button>

@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -8,10 +9,10 @@ export default function Home() {
       <section className={styles.heroSection}>
         {/* Navigation bar */}
         <nav className={styles.nav}>
-          <a href="/" className={styles.navLink + ' ' + styles.active}>Home</a>
-          <a href="/academics" className={styles.navLink}>Academics</a>
-          <a href="/skills-certifications" className={styles.navLink}>Skills and Certifications</a>
-          <a href="/contact" className={styles.navLink}>Get in Touch</a>
+          <Link href="/" className={styles.navLink + ' ' + styles.active}>Home</Link>
+          <Link href="/academics" className={styles.navLink}>Academics</Link>
+          <Link href="/skills-certifications" className={styles.navLink}>Skills and Certifications</Link>
+          <Link href="/contact" className={styles.navLink}>Get in Touch</Link>
         </nav>
         
         {/* Download buttons at bottom */}

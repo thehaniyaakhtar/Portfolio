@@ -1,187 +1,18 @@
 "use client";
-import React, { useState, useEffect, useCallback } from 'react';
 import styles from "./academics.module.css";
-
-// Image configuration for mini projects
-const miniProjectImages: Record<string, string[]> = {
-  'Maintenance Monitoring Platform for Industrial Safety Automation': [
-    '1Homepege.png',
-    '2Dashboard.png',
-    '3Prediction.png',
-    '4Recording IoT data.png',
-    '5Comparing Historic Records.png',
-    '6Results.png',
-    '7Scheduling a Repair.png',
-    'Setting Alerts.png',
-  ],
-  'Deep Learning-Powered Multi-Asset Forecasting Engine': [
-    '1Web Application Dashboard for Stock Analysis.jpg',
-    '2Real-Time Stock Prediction Execution using Stream-lit Library.jpg',
-    '3Technical Indicators for Stock Evaluation 1.jpg',
-    '4Technical Indicators for Stock Evaluation 2.jpg',
-    '5Cryptocurrency; Top Performers and Updates 1.jpg',
-    '6Cryptocurrency; Top Performers and Updates 2.jpg',
-    '7Latest Stock Market News Aggregation Module.jpg',
-    '8Mutual Funds Analysis Portal for Performance Evaluation.jpg',
-    'AI-Driven Stocks and Mutual Funds Chatbot for Instant Queries .jpg',
-    'Company Ticker Data Retrieval via Chatbot Execution.jpg',
-  ],
-  'CentsAbility – Basic Finance Tracker': [
-    '1Homepage.png',
-    '2Dashboard.png',
-    '3Recording Transactions.png',
-    '4Setting Monthly Budget.png',
-    '5Currency Converter.png',
-  ],
-};
+import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Academics() {
-  // Modal state
-  const [openModalProjectIndex, setOpenModalProjectIndex] = useState<number | null>(null);
-  const [openModalImageIndex, setOpenModalImageIndex] = useState(0);
-  const [imageLoading, setImageLoading] = useState(false);
-  const [imageError, setImageError] = useState(false);
-
-  // Global error handler for unhandled promise rejections
-  useEffect(() => {
-    const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
-      console.warn('Unhandled promise rejection:', event.reason);
-      event.preventDefault();
-    };
-
-    window.addEventListener('unhandledrejection', handleUnhandledRejection);
-    return () => window.removeEventListener('unhandledrejection', handleUnhandledRejection);
-  }, []);
-
-  // Prevent background scroll when modal is open
-  useEffect(() => {
-    if (openModalProjectIndex !== null) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [openModalProjectIndex]);
-
-  // Reset image state when modal opens
-  useEffect(() => {
-    if (openModalProjectIndex !== null) {
-      setImageLoading(true);
-      setImageError(false);
-    }
-  }, [openModalProjectIndex, openModalImageIndex]);
-
-  // Handle keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (openModalProjectIndex === null) return;
-      
-      switch (e.key) {
-        case 'Escape':
-          setOpenModalProjectIndex(null);
-          break;
-        case 'ArrowLeft':
-          e.preventDefault();
-          if (openModalImageIndex > 0) {
-            setOpenModalImageIndex(openModalImageIndex - 1);
-          }
-          break;
-        case 'ArrowRight':
-          e.preventDefault();
-          const currentProject = miniProjects[openModalProjectIndex];
-          const images = miniProjectImages[currentProject.title] || [];
-          if (openModalImageIndex < images.length - 1) {
-            setOpenModalImageIndex(openModalImageIndex + 1);
-          }
-          break;
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [openModalProjectIndex, openModalImageIndex]);
-
-  // Preload images for current project
-  const preloadImages = useCallback((projectTitle: string) => {
-    const images = miniProjectImages[projectTitle] || [];
-    images.forEach((imageName) => {
-      const img = new Image();
-      img.onload = () => {
-        // Image loaded successfully
-      };
-      img.onerror = () => {
-        // Image failed to load - this prevents unhandled rejection
-        console.warn(`Failed to preload image: /projects/${projectTitle}/${imageName}`);
-      };
-      img.src = `/projects/${projectTitle}/${imageName}`;
-    });
-  }, []);
-
-  const handleOpenModal = (projectIndex: number) => {
-    const project = miniProjects[projectIndex];
-    setOpenModalProjectIndex(projectIndex);
-    setOpenModalImageIndex(0);
-    preloadImages(project.title);
-  };
-
-  const handleImageLoad = () => {
-    setImageLoading(false);
-    setImageError(false);
-  };
-
-  const handleImageError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    console.warn('Image failed to load:', event.currentTarget.src);
-    setImageLoading(false);
-    setImageError(true);
-  };
-
-  const handleCloseModal = () => {
-    setOpenModalProjectIndex(null);
-    setImageLoading(false);
-    setImageError(false);
-  };
-
-  const handleGitHubLink = (githubUrl: string) => {
-    window.open(githubUrl, "_blank");
-  };
-
-  // Mini projects data
-  const miniProjects = [
-    {
-      title: 'Maintenance Monitoring Platform for Industrial Safety Automation',
-      description: 'A web-based ML solution for predictive maintenance, real-time issue tracking, and preventive scheduling.',
-      githubUrl: 'https://github.com/thehaniyaakhtar/Industrial-Safety-and-Maintenance-Monitoring-Hub',
-      publicationStatus: 'Scopus publication in process.',
-    },
-    {
-      title: 'Deep Learning-Powered Multi-Asset Forecasting Engine',
-      description: 'Built using Streamlit and LSTM models to visualize market insights and automate predictions for informed financial decisions.',
-      githubUrl: 'https://github.com/thehaniyaakhtar/Stock-Price-Predictor-and-Recommendation-System',
-      publicationStatus: 'Scopus publication in process.',
-    },
-    {
-      title: 'Spring Boot–Based Anonymous Feedback System',
-      description: 'A secure, real-time anonymous feedback system enabling direct yet anonymous communication between students and teachers.',
-      githubUrl: 'https://github.com/thehaniyaakhtar/Spring-Boot-based-Anonymous-Feedback-System',
-      publicationStatus: null,
-    },
-    {
-      title: 'CentsAbility – Basic Finance Tracker',
-      description: 'Responsive website to manage personal income, expenses, and financial summaries using front-end and back-end integrations.',
-      githubUrl: 'https://github.com/thehaniyaakhtar/CentsAbility-Basic-Finances-Tracking-Website',
-      publicationStatus: null,
-    },
-  ];
-
   return (
     <div className={styles.academicsContainer}>
       <section className={styles.academicsSection}>
         {/* Navigation bar */}
         <nav className={styles.nav}>
-          <a href="/" className={styles.navLink}>Home</a>
-          <a href="/academics" className={styles.navLink + ' ' + styles.active}>Academics</a>
-          <a href="/skills-certifications" className={styles.navLink}>Skills and Certifications</a>
-          <a href="/contact" className={styles.navLink}>Get in Touch</a>
+          <Link href="/" className={styles.navLink}>Home</Link>
+          <Link href="/academics" className={styles.navLink + ' ' + styles.active}>Academics</Link>
+          <Link href="/skills-certifications" className={styles.navLink}>Skills and Certifications</Link>
+          <Link href="/contact" className={styles.navLink}>Get in Touch</Link>
         </nav>
         
         {/* Main content */}
@@ -190,7 +21,7 @@ export default function Academics() {
           
           <div className={styles.introSection}>
             <p className={styles.introText}>
-              Final-year B.Tech. student in Computer Science Engineering (AI & ML), Mumbai University – CGPA 8.96
+              Final-year B.Tech. student in Computer Science Engineering (AI &amp; ML), Mumbai University &ndash; CGPA 8.96
               <br />
               Listed below are core subjects and certifications, academic projects and extra-curriculars.
             </p>
@@ -366,130 +197,78 @@ export default function Academics() {
             
             <div className={styles.subjectGroup}>
               <div className={styles.certificationsGrid} style={{gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px'}}>
-                {miniProjects.map((project, index) => {
-                  const images = miniProjectImages[project.title] || [];
-                  const hasImages = images.length > 0;
-                  
-                  return (
-                    <div key={index} className={styles.projectItem}>
-                      <h3 className={styles.projectTitle}>{project.title}</h3>
-                      {project.title === 'CentsAbility – Basic Finance Tracker' && (
-                        <span className={styles.projectStatus} style={{color: '#fcac16', fontWeight: 'bold', fontSize: '0.9rem', marginBottom: '8px', display: 'block'}}>
-                          My First Project!
-                        </span>
-                      )}
-                      <p className={styles.projectDescription}>
-                        {project.description}
-                      </p>
-                      <div className={styles.projectButtons}>
-                        <a 
-                          className={styles.githubButton}
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          View GitHub for details
-                        </a>
-                        {hasImages && (
-                          <button
-                            className={styles.githubButton}
-                            onClick={() => handleOpenModal(index)}
-                          >
-                            View Project
-                          </button>
-                        )}
-                      </div>
-                      {project.publicationStatus && (
-                        <span className={styles.publicationStatus} style={{marginTop: '18px', display: 'block'}}>
-                          {project.publicationStatus}
-                        </span>
-                      )}
-                    </div>
-                  );
-                })}
+                <div className={styles.projectItem}>
+                  <h3 className={styles.projectTitle}>Maintenance Monitoring Platform for Industrial Safety Automation</h3>
+                  <p className={styles.projectDescription}>
+                    A web-based ML solution for predictive maintenance, real-time issue tracking, and preventive scheduling.
+                  </p>
+                  <div className={styles.projectButtons}>
+                    <a 
+                      className={styles.githubButton}
+                      href="https://github.com/thehaniyaakhtar/Industrial-Safety-and-Maintenance-Monitoring-Hub"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View GitHub for details
+                    </a>
+                  </div>
+                  <span className={styles.publicationStatus} style={{marginTop: '18px', display: 'block'}}>Scopus publication in process.</span>
+                </div>
+
+                <div className={styles.projectItem}>
+                  <h3 className={styles.projectTitle}>Deep Learning-Powered Multi-Asset Forecasting Engine</h3>
+                  <p className={styles.projectDescription}>
+                    Built using Streamlit and LSTM models to visualize market insights and automate predictions for informed financial decisions.
+                  </p>
+                  <div className={styles.projectButtons}>
+                    <a 
+                      className={styles.githubButton}
+                      href="https://github.com/thehaniyaakhtar/Stock-Price-Predictor-and-Recommendation-System"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View GitHub for details
+                    </a>
+                  </div>
+                  <span className={styles.publicationStatus} style={{marginTop: '18px', display: 'block'}}>Scopus publication in process.</span>
+                </div>
+
+                <div className={styles.projectItem}>
+                  <h3 className={styles.projectTitle}>Spring Boot–Based Anonymous Feedback System</h3>
+                  <p className={styles.projectDescription}>
+                    A secure, real-time anonymous feedback system enabling direct yet anonymous communication between students and teachers.
+                  </p>
+                  <div className={styles.projectButtons}>
+                    <a 
+                      className={styles.githubButton}
+                      href="https://github.com/thehaniyaakhtar/Spring-Boot-based-Anonymous-Feedback-System"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View GitHub for details
+                    </a>
+                  </div>
+                </div>
+
+                <div className={styles.projectItem}>
+                  <h3 className={styles.projectTitle}>CentsAbility – Basic Finance Tracker</h3>
+                  <p className={styles.projectDescription}>
+                    Responsive website to manage personal income, expenses, and financial summaries using front-end and back-end integrations.
+                  </p>
+                  <div className={styles.projectButtons}>
+                    <a 
+                      className={styles.githubButton}
+                      href="https://github.com/thehaniyaakhtar/CentsAbility-Basic-Finances-Tracking-Website"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      View GitHub for details
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
-          {/* Image Modal */}
-          {openModalProjectIndex !== null && (
-            <div className={styles.modalOverlay} onClick={handleCloseModal}>
-              <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-                <button
-                  className={styles.modalCloseButton}
-                  onClick={handleCloseModal}
-                  aria-label="Close"
-                >
-                  ×
-                </button>
-                
-                {openModalImageIndex > 0 && (
-                  <button
-                    className={styles.modalNavButton}
-                    style={{ left: 8 }}
-                    onClick={() => setOpenModalImageIndex(openModalImageIndex - 1)}
-                    aria-label="Previous"
-                  >
-                    ‹
-                  </button>
-                )}
-                
-                <div className={styles.modalImageContainer}>
-                  {imageLoading && (
-                    <div className={styles.imageLoading}>
-                      <div className={styles.spinner}></div>
-                      <p>Loading image...</p>
-                    </div>
-                  )}
-                  
-                  {imageError && (
-                    <div className={styles.imageError}>
-                      <p>Failed to load image</p>
-                      <button 
-                        className={styles.githubButton}
-                        onClick={() => {
-                          setImageError(false);
-                          setImageLoading(true);
-                        }}
-                      >
-                        Retry
-                      </button>
-                    </div>
-                  )}
-                  
-                  {!imageError && (
-                    <img
-                      src={`/projects/${miniProjects[openModalProjectIndex].title}/${miniProjectImages[miniProjects[openModalProjectIndex].title][openModalImageIndex]}`}
-                      alt={miniProjectImages[miniProjects[openModalProjectIndex].title][openModalImageIndex]}
-                      className={styles.modalImage}
-                      onLoad={handleImageLoad}
-                      onError={handleImageError}
-                      style={{ display: imageLoading ? 'none' : 'block' }}
-                    />
-                  )}
-                </div>
-                
-                {openModalImageIndex < (miniProjectImages[miniProjects[openModalProjectIndex].title]?.length || 0) - 1 && (
-                  <button
-                    className={styles.modalNavButton}
-                    style={{ right: 8 }}
-                    onClick={() => setOpenModalImageIndex(openModalImageIndex + 1)}
-                    aria-label="Next"
-                  >
-                    ›
-                  </button>
-                )}
-                
-                <div className={styles.modalImageTitle}>
-                  {miniProjectImages[miniProjects[openModalProjectIndex].title][openModalImageIndex]?.replace(/^\d+/, '').replace(/\.[^/.]+$/, '').replace(/^_/, '')}
-                </div>
-                
-                <div className={styles.modalImageCounter}>
-                  {openModalImageIndex + 1} / {miniProjectImages[miniProjects[openModalProjectIndex].title]?.length}
-                </div>
-              </div>
-            </div>
-          )}
 
           <div className={styles.section}>
             <h2 className={styles.sectionTitle}>Other Recognized Certifications</h2>
