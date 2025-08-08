@@ -16,7 +16,7 @@ export default function Home() {
         </nav>
         
         {/* Download buttons at bottom */}
-        <div className={styles.buttonContainer}>
+        <div className={`${styles.buttonContainer} button-container`}>
           <a
             className={styles.downloadButton}
             href="/Haniya%20Akhtar.pdf"

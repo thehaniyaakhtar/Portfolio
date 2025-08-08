@@ -25,7 +25,7 @@ export default function Contact() {
         </nav>
         
         {/* Social media buttons at bottom */}
-        <div className={styles.buttonContainer}>
+        <div className={`${styles.buttonContainer} button-container`}>
           <button className={styles.socialButton} onClick={() => window.location.href = "mailto:thehaniyaakhtar@gmail.com"}>
             Gmail
           </button>

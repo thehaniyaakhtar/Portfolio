@@ -176,7 +176,7 @@ export default function Academics() {
           </div>
 
           <div className={styles.section}>
-            <h2 className={styles.sectionTitle}>Major Projects</h2>
+            <h2 className={styles.sectionTitle}>Major Project</h2>
             
             <div className={styles.subjectGroup}>
               <div className={styles.certificationsGrid} style={{gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px'}}>
