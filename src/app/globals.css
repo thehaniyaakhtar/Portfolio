@@ -1,3 +1,39 @@
+/* Page fade-in effect */
+body {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+body.page-loaded {
+  opacity: 1;
+}
+
+/* Simple spinner for loading overlay */
+.global-spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(20,20,20,0.85);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s;
+}
+.global-spinner {
+  border: 6px solid #fcac16;
+  border-top: 6px solid #211f29;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,7 +59,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

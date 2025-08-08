@@ -21,15 +21,20 @@ export default function Contact() {
         <nav className={styles.nav}>
           <a href="/" className={styles.navLink}>Home</a>
           <a href="/academics" className={styles.navLink}>Academics</a>
-          <a href="#" className={styles.navLink}>Skills and Certifications</a>
+          <a href="/skills-certifications" className={styles.navLink}>Skills and Certifications</a>
           <a href="/contact" className={styles.navLink + ' ' + styles.active}>Get in Touch</a>
         </nav>
         
         {/* Social media buttons at bottom */}
         <div className={styles.buttonContainer}>
-          <button className={styles.socialButton} onClick={handleGmailClick}>
-            Gmail
-          </button>
+          <a
+            className={styles.socialButton}
+            href="https://forms.gle/xEWJNTfeFZaW5fGt7"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Reach Out
+          </a>
           <button className={styles.socialButton} onClick={handleLinkedInClick}>
             LinkedIn
           </button>
