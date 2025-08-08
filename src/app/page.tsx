@@ -20,7 +20,8 @@ export default function Home() {
           <a
             className={styles.downloadButton}
             href="/Haniya%20Akhtar.pdf"
-            download
+            download="Haniya Akhtar Resume.pdf"
+            rel="noopener noreferrer"
           >
             Download Resume
           </a>
