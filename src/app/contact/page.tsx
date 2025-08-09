@@ -13,6 +13,10 @@ export default function Contact() {
     window.open("https://github.com/thehaniyaakhtar", "_blank");
   };
 
+  const handleEmailClick = () => {
+    window.open("https://forms.gle/8AkbnL3sqM4Wsdee6", "_blank");
+  };
+
   return (
     <div className={styles.contactContainer}>
       <section className={styles.contactSection}>
@@ -26,9 +30,9 @@ export default function Contact() {
         
         {/* Social media buttons at bottom */}
         <div className={`${styles.buttonContainer} button-container`}>
-          <button className={styles.socialButton} onClick={() => window.location.href = "mailto:thehaniyaakhtar@gmail.com"}>
-            Gmail
-          </button>
+        <button className={styles.socialButton} onClick={handleEmailClick}>
+        Reach Out
+        </button>
           <button className={styles.socialButton} onClick={handleLinkedInClick}>
             LinkedIn
           </button>
